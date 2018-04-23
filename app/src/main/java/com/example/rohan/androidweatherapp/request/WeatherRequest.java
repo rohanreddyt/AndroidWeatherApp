@@ -6,15 +6,15 @@ import retrofit2.Call;
 
 public class WeatherRequest implements BaseRequest {
 
-    Service service;
+    WeatherAPI weatherAPI;
 
-    public WeatherRequest(Service service) {
-        this.service = service;
+    public WeatherRequest(WeatherAPI weatherAPI) {
+        this.weatherAPI = weatherAPI;
     }
 
     @Override
     public Call<WeatherUpdate> getWeatherUpdate(String zipCode, String key) {
-       Call<WeatherUpdate> response = service.getWeatherUpdate(zipCode,key);
+       Call<WeatherUpdate> response = weatherAPI.getWeatherUpdate(zipCode,key);
        return response;
     }
 

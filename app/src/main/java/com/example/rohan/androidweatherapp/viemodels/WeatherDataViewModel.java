@@ -19,6 +19,20 @@ public class WeatherDataViewModel {
     ObservableBoolean showErrorMessage;
     ObservableBoolean showLoading = new ObservableBoolean(true);
 
+    /**
+     * setting the observables
+     * @param context
+     * @param description
+     * @param temperature
+     * @param max_temp
+     * @param pressure
+     * @param humidity
+     * @param windSpeed
+     * @param cloudiness
+     * @param city
+     * @param country
+     * @param showErrorMessage
+     */
     public WeatherDataViewModel(Context context, String description, int temperature, int max_temp, long pressure, long humidity, double windSpeed, String cloudiness, String city, String country, boolean showErrorMessage) {
         init();
         this.description.set(description);
@@ -33,6 +47,9 @@ public class WeatherDataViewModel {
 
     }
 
+    /**
+     *initializing the Observables
+     */
     private void init() {
         description = new ObservableField<String>("");
         temperature = new ObservableField<>("");

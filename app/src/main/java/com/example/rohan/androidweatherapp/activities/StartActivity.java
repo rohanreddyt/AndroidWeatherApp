@@ -6,9 +6,6 @@ import android.databinding.DataBindingUtil;
 
 import com.example.rohan.androidweatherapp.R;
 import com.example.rohan.androidweatherapp.databinding.ActivityStartBinding;
-import com.example.rohan.androidweatherapp.request.Client;
-import com.example.rohan.androidweatherapp.request.Service;
-import com.example.rohan.androidweatherapp.request.WeatherRequest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

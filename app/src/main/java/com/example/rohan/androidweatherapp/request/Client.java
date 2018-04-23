@@ -9,8 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Client {
     public static final String BASE_URL ="http://api.openweathermap.org/data/2.5/";
-    public static Retrofit retrofit = null;
-    private static Service service;
     private static HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
     private static Interceptor logging = interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 

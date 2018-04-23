@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
-public interface Service {
+public interface WeatherAPI {
     @GET("weather")
     Call<WeatherUpdate> getWeatherUpdate(@Query("zip") String zipCode,
                                          @Query("appid") final String API_KEY);

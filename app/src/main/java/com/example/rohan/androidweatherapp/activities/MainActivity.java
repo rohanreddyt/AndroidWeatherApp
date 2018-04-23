@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,13 +25,10 @@ import com.example.rohan.androidweatherapp.model.Weather;
 import com.example.rohan.androidweatherapp.model.WeatherUpdate;
 import com.example.rohan.androidweatherapp.model.Wind;
 import com.example.rohan.androidweatherapp.request.Client;
-import com.example.rohan.androidweatherapp.request.Service;
+import com.example.rohan.androidweatherapp.request.WeatherAPI;
 import com.example.rohan.androidweatherapp.request.WeatherRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
-
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,11 +46,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
       binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = binding.drawerLayout;
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -78,11 +74,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+    /**
+     * request to get the weather info based on zipCode within the US
+     * @param zipCode,country,API_KEY
+     */
 
-    //making the request
     private void getData(String zipCode, String countryCode, final String API_KEY){
         try {
-            WeatherRequest request = new WeatherRequest(new Client().createService(Service.class));
+            WeatherRequest request = new WeatherRequest(new Client().createService(WeatherAPI.class));
             zipCode = zipCode + "," + countryCode;
             Call<WeatherUpdate> data = request.getWeatherUpdate(zipCode, API_KEY);
             data.enqueue(new Callback<WeatherUpdate>() {
@@ -104,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /**
+     * To update the viewModel with the response from the request
+     * @param  weatherUpdate
+     */
     private void updateData(WeatherUpdate weatherUpdate){
         this.weatherData = weatherUpdate;
         Main mainData=null;
@@ -160,6 +163,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding.setWeatherDataViewModel(weatherDataViewModel);
 
     }
+
+    /**
+     * in case of error to show the error or data based on the flag
+     * @param isError
+     */
     public void showErrorMessage(boolean isError){
         if(isError){
             binding.errorMessage.setVisibility(View.VISIBLE);
@@ -171,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = binding.drawerLayout;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -197,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = binding.drawerLayout;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
