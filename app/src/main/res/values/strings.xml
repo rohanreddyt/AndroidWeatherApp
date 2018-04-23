@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ABC</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="set_location">%1$s: %2$s, %3$s</string>
+    <string name="temperature">%1$d\u00b0%2$s</string>
+    <string name="pressure">%1$d %2$s</string>
+    <string name="wind_speed">%1$s %2$s</string>
+    <string name="humidity">%1$d%2$s</string>
+    <string name="main_description">Sunshine and clouds mixed. A stray shower or thunderstorm is possible. High %1$d%2$s . Winds SSW at 10 to 20 mph.</string>
+    <string name="error_message">please enter a valid zipcode</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="wind_speed_text">Wind Speed</string>
+    <string name="cloudiness_text">Cloudiness</string>
+    <string name="pressure_text">Pressure</string>
+    <string name="humidity_text">Humidity</string>
+    <string name="enter_the_zipcode">Enter the ZipCode</string>
+    <string name="get_info">Get Info</string>
+</resources>
